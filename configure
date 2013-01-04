@@ -617,8 +617,8 @@ LTLIBOBJS
 LIBOBJS
 libconfig_LIBS
 libconfig_CFLAGS
-libpcreposix_LIBS
-libpcreposix_CFLAGS
+libpcre_LIBS
+libpcre_CFLAGS
 gamin_LIBS
 gamin_CFLAGS
 libcurl_LIBS
@@ -774,8 +774,8 @@ libcurl_CFLAGS
 libcurl_LIBS
 gamin_CFLAGS
 gamin_LIBS
-libpcreposix_CFLAGS
-libpcreposix_LIBS
+libpcre_CFLAGS
+libpcre_LIBS
 libconfig_CFLAGS
 libconfig_LIBS'
 
@@ -1440,10 +1440,10 @@ Some influential environment variables:
   gamin_CFLAGS
               C compiler flags for gamin, overriding pkg-config
   gamin_LIBS  linker flags for gamin, overriding pkg-config
-  libpcreposix_CFLAGS
-              C compiler flags for libpcreposix, overriding pkg-config
-  libpcreposix_LIBS
-              linker flags for libpcreposix, overriding pkg-config
+  libpcre_CFLAGS
+              C compiler flags for libpcre, overriding pkg-config
+  libpcre_LIBS
+              linker flags for libpcre, overriding pkg-config
   libconfig_CFLAGS
               C compiler flags for libconfig, overriding pkg-config
   libconfig_LIBS
@@ -16240,19 +16240,19 @@ $as_echo "yes" >&6; }
 fi
 
 pkg_failed=no
-{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for libpcreposix" >&5
-$as_echo_n "checking for libpcreposix... " >&6; }
+{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for libpcre" >&5
+$as_echo_n "checking for libpcre... " >&6; }
 
-if test -n "$libpcreposix_CFLAGS"; then
-    pkg_cv_libpcreposix_CFLAGS="$libpcreposix_CFLAGS"
+if test -n "$libpcre_CFLAGS"; then
+    pkg_cv_libpcre_CFLAGS="$libpcre_CFLAGS"
  elif test -n "$PKG_CONFIG"; then
     if test -n "$PKG_CONFIG" && \
-    { { $as_echo "$as_me:${as_lineno-$LINENO}: \$PKG_CONFIG --exists --print-errors \"libpcreposix\""; } >&5
-  ($PKG_CONFIG --exists --print-errors "libpcreposix") 2>&5
+    { { $as_echo "$as_me:${as_lineno-$LINENO}: \$PKG_CONFIG --exists --print-errors \"libpcre\""; } >&5
+  ($PKG_CONFIG --exists --print-errors "libpcre") 2>&5
   ac_status=$?
   $as_echo "$as_me:${as_lineno-$LINENO}: \$? = $ac_status" >&5
   test $ac_status = 0; }; then
-  pkg_cv_libpcreposix_CFLAGS=`$PKG_CONFIG --cflags "libpcreposix" 2>/dev/null`
+  pkg_cv_libpcre_CFLAGS=`$PKG_CONFIG --cflags "libpcre" 2>/dev/null`
 		      test "x$?" != "x0" && pkg_failed=yes
 else
   pkg_failed=yes
@@ -16260,16 +16260,16 @@ fi
  else
     pkg_failed=untried
 fi
-if test -n "$libpcreposix_LIBS"; then
-    pkg_cv_libpcreposix_LIBS="$libpcreposix_LIBS"
+if test -n "$libpcre_LIBS"; then
+    pkg_cv_libpcre_LIBS="$libpcre_LIBS"
  elif test -n "$PKG_CONFIG"; then
     if test -n "$PKG_CONFIG" && \
-    { { $as_echo "$as_me:${as_lineno-$LINENO}: \$PKG_CONFIG --exists --print-errors \"libpcreposix\""; } >&5
-  ($PKG_CONFIG --exists --print-errors "libpcreposix") 2>&5
+    { { $as_echo "$as_me:${as_lineno-$LINENO}: \$PKG_CONFIG --exists --print-errors \"libpcre\""; } >&5
+  ($PKG_CONFIG --exists --print-errors "libpcre") 2>&5
   ac_status=$?
   $as_echo "$as_me:${as_lineno-$LINENO}: \$? = $ac_status" >&5
   test $ac_status = 0; }; then
-  pkg_cv_libpcreposix_LIBS=`$PKG_CONFIG --libs "libpcreposix" 2>/dev/null`
+  pkg_cv_libpcre_LIBS=`$PKG_CONFIG --libs "libpcre" 2>/dev/null`
 		      test "x$?" != "x0" && pkg_failed=yes
 else
   pkg_failed=yes
@@ -16290,22 +16290,22 @@ else
         _pkg_short_errors_supported=no
 fi
         if test $_pkg_short_errors_supported = yes; then
-	        libpcreposix_PKG_ERRORS=`$PKG_CONFIG --short-errors --print-errors --cflags --libs "libpcreposix" 2>&1`
+	        libpcre_PKG_ERRORS=`$PKG_CONFIG --short-errors --print-errors --cflags --libs "libpcre" 2>&1`
         else
-	        libpcreposix_PKG_ERRORS=`$PKG_CONFIG --print-errors --cflags --libs "libpcreposix" 2>&1`
+	        libpcre_PKG_ERRORS=`$PKG_CONFIG --print-errors --cflags --libs "libpcre" 2>&1`
         fi
 	# Put the nasty error message in config.log where it belongs
-	echo "$libpcreposix_PKG_ERRORS" >&5
+	echo "$libpcre_PKG_ERRORS" >&5
 
-	as_fn_error $? "Package requirements (libpcreposix) were not met:
+	as_fn_error $? "Package requirements (libpcre) were not met:
 
-$libpcreposix_PKG_ERRORS
+$libpcre_PKG_ERRORS
 
 Consider adjusting the PKG_CONFIG_PATH environment variable if you
 installed software in a non-standard prefix.
 
-Alternatively, you may set the environment variables libpcreposix_CFLAGS
-and libpcreposix_LIBS to avoid the need to call pkg-config.
+Alternatively, you may set the environment variables libpcre_CFLAGS
+and libpcre_LIBS to avoid the need to call pkg-config.
 See the pkg-config man page for more details." "$LINENO" 5
 elif test $pkg_failed = untried; then
      	{ $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
@@ -16316,19 +16316,20 @@ as_fn_error $? "The pkg-config script could not be found or is too old.  Make su
 is in your PATH or set the PKG_CONFIG environment variable to the full
 path to pkg-config.
 
-Alternatively, you may set the environment variables libpcreposix_CFLAGS
-and libpcreposix_LIBS to avoid the need to call pkg-config.
+Alternatively, you may set the environment variables libpcre_CFLAGS
+and libpcre_LIBS to avoid the need to call pkg-config.
 See the pkg-config man page for more details.
 
 To get pkg-config, see <http://pkg-config.freedesktop.org/>.
 See \`config.log' for more details" "$LINENO" 5; }
 else
-	libpcreposix_CFLAGS=$pkg_cv_libpcreposix_CFLAGS
-	libpcreposix_LIBS=$pkg_cv_libpcreposix_LIBS
+	libpcre_CFLAGS=$pkg_cv_libpcre_CFLAGS
+	libpcre_LIBS=$pkg_cv_libpcre_LIBS
         { $as_echo "$as_me:${as_lineno-$LINENO}: result: yes" >&5
 $as_echo "yes" >&6; }
 
 fi
+libpcre_LIBS="-lpcreposix -lpcre"
 
 pkg_failed=no
 { $as_echo "$as_me:${as_lineno-$LINENO}: checking for libconfig" >&5

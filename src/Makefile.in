@@ -183,8 +183,8 @@ libcurl_CFLAGS = @libcurl_CFLAGS@
 libcurl_LIBS = @libcurl_LIBS@
 libdir = @libdir@
 libexecdir = @libexecdir@
-libpcreposix_CFLAGS = @libpcreposix_CFLAGS@
-libpcreposix_LIBS = @libpcreposix_LIBS@
+libpcre_CFLAGS = @libpcre_CFLAGS@
+libpcre_LIBS = @libpcre_LIBS@
 localedir = @localedir@
 localstatedir = @localstatedir@
 mandir = @mandir@
@@ -202,8 +202,8 @@ target_alias = @target_alias@
 top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
-cached_CFLAGS = $(libcurl_CFLAGS)  $(gamin_CFLAGS)  $(libpcreposix_CFLAGS)  $(libconfig_CFLAGS)
-cached_LDFLAGS = $(libcurl_LIBS) $(gamin_LIBS)  $(libpcreposix_LIBS)  $(libconfig_LIBS)
+cached_CFLAGS = $(libcurl_CFLAGS)  $(gamin_CFLAGS)  $(libpcre_CFLAGS)  $(libconfig_CFLAGS)
+cached_LDFLAGS = $(libcurl_LIBS) $(gamin_LIBS)  $(libpcre_LIBS)  $(libconfig_LIBS)
 cached_SOURCES = cached.c fparser.c downloader.c download_worker.c
 all: all-am
 

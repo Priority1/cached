@@ -16,7 +16,8 @@ AM_PROG_CC_C_O
 # Checks for libraries.
 PKG_CHECK_MODULES([libcurl],[libcurl])
 PKG_CHECK_MODULES([gamin],[gamin])
-PKG_CHECK_MODULES([libpcreposix],[libpcreposix])
+PKG_CHECK_MODULES([libpcre],[libpcre])
+libpcre_LIBS="-lpcreposix -lpcre"
 PKG_CHECK_MODULES([libconfig],[libconfig])
 
 # Checks for typedefs, structures, and compiler characteristics.
