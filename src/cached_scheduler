@@ -1,0 +1,3 @@
+*/5 * * * * root  mysql -u cached --password=cached cached  -e "delete FROM cached where cached_time < ADDDATE(NOW(), INTERVAL  - 10 MINUTE);"
+*/5 * * * * root  mysql -u cached --password=cached cached  -e "delete FROM scoreboard where lastsave < ADDDATE(NOW(), INTERVAL  - 10 MINUTE);"
+

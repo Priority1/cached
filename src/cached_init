@@ -1,0 +1,86 @@
+#!/bin/bash
+#
+# chkconfig: 2345 99 15
+# description: Cache daemon
+# processname: /usr/sbin/cached
+# pidfile: /var/run/cached.pid
+
+# source function library
+
+. /etc/init.d/functions
+
+LOCKFILE=/var/lock/cached/cached
+PIDFILE=/var/run/cached.pid
+RETVAL=0
+
+cached=/usr/sbin/cached
+prog=cached
+
+start()
+{
+	echo -n $"Starting $prog: "
+	
+	mkdir -p /var/lock/cached
+    	mkdir -p /var/run/cached
+	
+	# start daemon
+	daemon $cached
+        RETVAL=$?
+	echo
+	[ $RETVAL = 0 ] && touch $LOCKFILE
+	return $RETVAL
+}
+
+stop() {
+	# stop daemon
+	echo -n $"Stopping $prog: "
+	killproc $DAEMON -p $PIDFILE
+	RETVAL=$?
+	echo
+	[ $RETVAL = 0 ] && rm -f $LOCKFILE
+}
+
+restart()
+{
+	stop
+	start
+	RETVAL=$?
+	return $RETVAL
+}
+
+rotate() {
+    echo -n $"Log rotation: "
+    kill -HUP `cat $PIDFILE`
+    echo
+    RETVAL=$?
+    return $RETVAL
+}
+
+# See how we were called.
+case "$1" in
+	start)
+		check
+		RETVAL=$?
+		[ $RETVAL -eq 0 ] && start ||:
+		;;
+	stop)
+		stop
+		;;
+	restart)
+		restart
+		;;
+	status)
+		status $prog
+		RETVAL=$?
+		;;
+	rotate)
+                rotate
+                RETVAL=$?
+                ;;
+	*)
+	echo $"Usage: $prog {start|stop|restart|status|rotate}"
+	RETVAL=1
+esac
+
+exit $RETVAL
+
