@@ -43,8 +43,8 @@ int main(int argc, char *argv[]) {
 	}
 	/* let's become a non-root */
 	if ((pw = getpwnam(cfg_get_str("user")))) {
-		setuid(pw->pw_uid);
 		setgid(pw->pw_gid);
+		setuid(pw->pw_uid);
 	} else {
 		printf("Can not sudo to user \"%s\"\n", cfg_get_str("user"));
 		exit(EXIT_FAILURE);
