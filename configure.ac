@@ -19,6 +19,7 @@ PKG_CHECK_MODULES([gamin],[gamin])
 PKG_CHECK_MODULES([libpcre],[libpcre])
 libpcre_LIBS="-lpcreposix -lpcre"
 PKG_CHECK_MODULES([libconfig],[libconfig])
+AC_SEARCH_LIBS([clock_gettime], [rt])
 
 # Checks for typedefs, structures, and compiler characteristics.
 AC_TYPE_MODE_T
