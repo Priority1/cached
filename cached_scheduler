@@ -1,0 +1,4 @@
+*/5 * * * * root  mysql -u cached --password=cached cached  -e "delete FROM scoreboard where lastsave < ADDDATE(NOW(), INTERVAL  - 10 MINUTE);"
+*/5 * * * * root  mysql -u cached --password=cached cached  -e "delete cached.* from cached LEFT JOIN scoreboard ON cached.id=scoreboard.id AND cached.fe_id=scoreboard.fe_id WHERE scoreboard.lastsave > cached.cached_time;"
+
+

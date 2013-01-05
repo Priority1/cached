@@ -10,21 +10,23 @@
 . /etc/init.d/functions
 
 LOCKFILE=/var/lock/cached/cached
-PIDFILE=/var/run/cached.pid
+CONFIGFILE=/etc/cached/cached.conf
+PIDFILE=/var/run/cached/cached.pid
 RETVAL=0
+USER=_nginx
 
-cached=/usr/sbin/cached
+cached=/usr/bin/cached
 prog=cached
 
 start()
 {
 	echo -n $"Starting $prog: "
 	
-	mkdir -p /var/lock/cached
     	mkdir -p /var/run/cached
+	chown $USER /var/run/cached
 	
 	# start daemon
-	daemon $cached
+	daemon $cached -f $CONFIGFILE
         RETVAL=$?
 	echo
 	[ $RETVAL = 0 ] && touch $LOCKFILE
@@ -59,9 +61,7 @@ rotate() {
 # See how we were called.
 case "$1" in
 	start)
-		check
-		RETVAL=$?
-		[ $RETVAL -eq 0 ] && start ||:
+		start
 		;;
 	stop)
 		stop
@@ -70,7 +70,7 @@ case "$1" in
 		restart
 		;;
 	status)
-		status $prog
+		status -p $PIDFILE $prog
 		RETVAL=$?
 		;;
 	rotate)
@@ -83,4 +83,3 @@ case "$1" in
 esac
 
 exit $RETVAL
-
