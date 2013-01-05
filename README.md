@@ -17,8 +17,12 @@ Requirement packages:
 * Libcurl
 * Gamin(fam)
 
+Download `cached-0.4.tar.gz`
+
 On the frontend server:
 ```
+tar -xzvf cached-0.4.tar.gz
+cd cached-0.4
 ./configure
 make
 make install
