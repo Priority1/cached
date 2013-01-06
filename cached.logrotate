@@ -1,0 +1,12 @@
+/var/log/cached/cached.log {
+    daily
+    rotate 7
+    missingok
+    notifempty
+    sharedscripts
+    delaycompress
+    create 0644 _nginx _nginx
+    postrotate
+        /sbin/service cached rotate >/dev/null
+    endscript
+}
