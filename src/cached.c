@@ -391,6 +391,10 @@ int query_mysql(MYSQL* conn, char* query) {
 			error_log(ERROR,"An unknown error occurred. ");
 			return retval;
 			break;
+		default:
+			error_log(ERROR,"[MYSQL] An error occured. We try to execute \"%s\" but got: %u: %s", query,
+					mysql_errno(conn), mysql_error(conn));
+			break;
 		}
 	}
 	return retval;
